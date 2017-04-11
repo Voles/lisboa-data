@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fietstocht Poperinge - Pisa</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="image-bg-fluid-height" id="pisa"></div>
+
+  <div class="container">
+
+    <div class="heading">
+      <h1>Lissabon &mdash; Haarlem</h1>
+      <p class="lead">
+        Op zondag 14 augustus 2016 vlogen Hannes en ik van Schiphol naar Lissabon. 21 dagen
+         en 2362km verder kwamen we weer aan in Poperinge. Deze pagina geeft het verloop van de hele tocht weer.
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="map">
+          <iframe src="https://www.google.com/maps/d/u/0/embed?mid=119g1dVKrzQJ4V6EpaZdEdQhEjy0" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="chart_distance" class="chart"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="chart_max" class="chart"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="chart_avg" class="chart"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="chart_cost" class="chart"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="chart_overview" class="chart"></div>
+      </div>
+    </div>
+  </div>
+
+<div class="image-bg-fluid-height" id="manarola">&nbsp;</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <p class="text-center">
+          <em>Obrigado!</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>if (!window.jQuery) { document.write('<script src="bower_components/jquery/dist/jquery.min.js"><\/script>'); }</script>
+
+  <script type="text/javascript"
+          src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script>
+    google.charts.load('43', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawTitleSubtitle);
+
+    function drawTitleSubtitle() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Dag');
+      data.addColumn('number', 'Afstand in km');
+      data.addColumn('number', 'Maximale snelheid (km/u)');
+      data.addColumn('number', 'Gemiddelde snelheid (km/u)');
+      data.addColumn('number', 'Kostprijs overnachting (EUR)');
+
+      data.addRows([
+        ['Di 16 aug.', 158.53, 48,    19.1,   18],
+        ['Wo 17 aug.', 144.45, 49.4,  21.8,   12.5],
+        ['Do 18 aug.', 72.1,   45.83, 23.11,  30],
+        ['Vr 19 aug.', 123,    45.31, 19.11,  6],
+        ['Za 20 aug.', 108,    57.72, 19.41,  16],
+        ['Zo 21 aug.', 128,    70.81, 20.73,  10],
+        ['Ma 22 aug.', 99.6,   60.50, 21.22,  0],
+        ['Di 23 aug.', 160,    52.26, 23.84,  5],
+        ['Wo 24 aug.', 131,    47.28, 23.39,  5],
+        ['Do 25 aug.', 140,    0,     0,      0], // ? not sure about values, so used 0
+        ['Vr 26 aug.', 31.3,   54.24, 24.36,  50],
+        ['Za 27 aug.', 0,      0,     0,      50],
+        ['Zo 28 aug.', 157.74, 71.19, 21.3,   8],
+        ['Ma 29 aug.', 133,    58.91, 24.33,  10],
+        ['Di 30 aug.', 132,    52.18, 20.27,  35],
+        ['Wo 31 aug.', 85.6,   52.79, 19.59,  20.30],
+        ['Do 1 sep.', 167,     55.59, 27.04,  26.20],
+        ['Vr 2 sep.', 78.5,    42.83, 24.60,  43.08],
+        ['Za 3 sep.', 0,       0,     0,      43.08],
+        ['Zo 4 sep.', 170,     45.20, 22.2,   0], // ? not sure about last value, so used 0
+        ['Ma 5 sep.', 141,     45.77, 23.94,  0]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Overzicht',
+          subtitle: 'Totale afstand 1435km'
+        }
+      };
+
+      var material = new google.charts.Bar(document.getElementById('chart_overview'));
+      material.draw(data, options);
+    }
+  </script>
+
+  <script>
+    google.charts.setOnLoadCallback(drawTitleSubtitle);
+
+    function drawTitleSubtitle() {
+      console.log('drawTitleSubtitle');
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Dag');
+      data.addColumn('number', 'Afstand in km');
+
+      data.addRows([
+        ['Di 16 aug.', 158.53],
+        ['Wo 17 aug.', 144.45],
+        ['Do 18 aug.', 72.1],
+        ['Vr 19 aug.', 123],
+        ['Za 20 aug.', 108],
+        ['Zo 21 aug.', 128],
+        ['Ma 22 aug.', 99.6],
+        ['Di 23 aug.', 160],
+        ['Wo 24 aug.', 131],
+        ['Do 25 aug.', 140],
+        ['Vr 26 aug.', 31.3],
+        ['Za 27 aug.', 0],
+        ['Zo 28 aug.', 157.74],
+        ['Ma 29 aug.', 133],
+        ['Di 30 aug.', 132],
+        ['Wo 31 aug.', 85.6],
+        ['Do 1 sep.', 167],
+        ['Vr 2 sep.', 78.5],
+        ['Za 3 sep.', 0],
+        ['Zo 4 sep.', 170],
+        ['Ma 5 sep.', 141]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Afstand per dag',
+          subtitle: 'In km'
+        },
+        legend: { position: 'none' }
+      };
+
+      var material = new google.charts.Bar(document.getElementById('chart_distance'));
+      material.draw(data, options);
+    }
+  </script>
+
+  <script>
+    google.charts.setOnLoadCallback(drawTitleSubtitle);
+
+    function drawTitleSubtitle() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Dag');
+      data.addColumn('number', 'Maximale snelheid (km/u)');
+
+      data.addRows([
+        ['Di 16 aug.', 48],
+        ['Wo 17 aug.', 49.4],
+        ['Do 18 aug.', 45.83],
+        ['Vr 19 aug.', 45.31],
+        ['Za 20 aug.', 57.72],
+        ['Zo 21 aug.', 70.81],
+        ['Ma 22 aug.', 60.50],
+        ['Di 23 aug.', 52.26],
+        ['Wo 24 aug.', 47.28],
+        ['Do 25 aug.', 0], // ? not sure about value, so used 0
+        ['Vr 26 aug.', 54.24],
+        ['Za 27 aug.', 0],
+        ['Zo 28 aug.', 71.19],
+        ['Ma 29 aug.', 58.91],
+        ['Di 30 aug.', 52.18],
+        ['Wo 31 aug.', 52.79],
+        ['Do 1 sep.',  55.59],
+        ['Vr 2 sep.',  42.83],
+        ['Za 3 sep.',  0],
+        ['Zo 4 sep.',  45.20],
+        ['Ma 5 sep.',  45.77]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Maximale snelheid',
+          subtitle: 'In km per uur'
+        },
+        legend: { position: 'none' },
+        colors: ['#DB4437']
+      };
+
+      var material = new google.charts.Bar(document.getElementById('chart_max'));
+      material.draw(data, options);
+    }
+  </script>
+
+  <script>
+    google.charts.setOnLoadCallback(drawTitleSubtitle);
+
+    function drawTitleSubtitle() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Dag');
+      data.addColumn('number', 'Gemiddelde snelheid (km/u)');
+
+      data.addRows([
+        ['Di 16 aug.', 19.1],
+        ['Wo 17 aug.', 21.8],
+        ['Do 18 aug.', 23.11],
+        ['Vr 19 aug.', 19.11],
+        ['Za 20 aug.', 19.41],
+        ['Zo 21 aug.', 20.73],
+        ['Ma 22 aug.', 21.22],
+        ['Di 23 aug.', 23.84],
+        ['Wo 24 aug.', 23.39],
+        ['Do 25 aug.', 0], // ? not sure about value, so used 0
+        ['Vr 26 aug.', 24.36],
+        ['Za 27 aug.', 0],
+        ['Zo 28 aug.', 21.3],
+        ['Ma 29 aug.', 24.33],
+        ['Di 30 aug.', 20.27],
+        ['Wo 31 aug.', 19.59],
+        ['Do 1 sep.',  27.04],
+        ['Vr 2 sep.',  24.60],
+        ['Za 3 sep.',  0],
+        ['Zo 4 sep.',  22.2],
+        ['Ma 5 sep.',  23.94]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Gemiddelde snelheid',
+          subtitle: 'In km per uur'
+        },
+        legend: { position: 'none' },
+        colors: ['#F4B400']
+      };
+
+      var material = new google.charts.Bar(document.getElementById('chart_avg'));
+      material.draw(data, options);
+    }
+  </script>
+
+  <script>
+    google.charts.setOnLoadCallback(drawTitleSubtitle);
+
+    function drawTitleSubtitle() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Dag');
+      data.addColumn('number', 'Kostprijs overnachting in EUR');
+
+      data.addRows([
+        ['Di 16 aug.', 18],
+        ['Wo 17 aug.', 12.5],
+        ['Do 18 aug.', 30],
+        ['Vr 19 aug.', 6],
+        ['Za 20 aug.', 16],
+        ['Zo 21 aug.', 10],
+        ['Ma 22 aug.', 0],
+        ['Di 23 aug.', 5],
+        ['Wo 24 aug.', 5],
+        ['Do 25 aug.', 0],
+        ['Vr 26 aug.', 50],
+        ['Za 27 aug.', 50],
+        ['Zo 28 aug.', 8],
+        ['Ma 29 aug.', 10],
+        ['Di 30 aug.', 35],
+        ['Wo 31 aug.', 20.30],
+        ['Do 1 sep.', 26.20],
+        ['Vr 2 sep.', 43.08],
+        ['Za 3 sep.', 43.08],
+        ['Zo 4 sep.', 0], // ? not sure about value, so used 0
+        ['Ma 5 sep.', 0]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Kostprijs overnachting',
+          subtitle: 'In EUR'
+        },
+        legend: {position: 'none'},
+        colors: ['#0F9D58']
+      };
+
+      var material = new google.charts.Bar(document.getElementById('chart_cost'));
+      material.draw(data, options);
+    }
+  </script>
+
+</body>
+</html>
