@@ -1,7 +1,7 @@
-Pisa data
+Lisboa data
 =========
 
-A webpage containing the data about [our trip to Pisa](http://pisa.nielsdequeker.be).
+A webpage containing the data about [our trip from Lisboa to Haarlem](http://lissabon.nielsdequeker.be).
 
 ## Development environment setup
 #### Prerequisites
